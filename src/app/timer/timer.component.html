@@ -1,3 +1,4 @@
-<input (keyup)="onKey($event)">
-<div>Hours: {{time.h}} Minutes: {{time.m}} Seconds{{time.s}}</div>
+<input type="number" [(ngModel)]="inputSeconds">
+<div>Hours: {{time.h}} Minutes: {{time.m}} Seconds: {{time.s}}</div>
 <button (click)="startTimer()">Start Timer</button >
+{{message}}

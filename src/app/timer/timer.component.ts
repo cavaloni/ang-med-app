@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval'
+import 'rxjs/add/operator/takeWhile';
 
 @Component({
   selector: 'app-timer',
@@ -12,26 +13,35 @@ export class TimerComponent implements OnInit {
     
   }
 
+  private message: string;
+
   ngOnInit() {
     this.time = this.secondsToTime(0)
     console.log(this.time)
   }
 
-  onKey(event: any) {
-    this.seconds = event.target.value;
+  timerDone() {
+    this.message = "Timer Completed!"
   }
 
   private startTimer(): void {
-    this.time = this.secondsToTime(this.seconds);
+    let seconds = this.inputSeconds
+    this.message = '';
+    this.time = this.secondsToTime(seconds);
     this.timer = Observable.interval(1000);
-    this.timer.subscribe((x) => {
-      this.seconds -= 1
-      this.time = this.secondsToTime(this.seconds)
+    this.timer
+    .takeWhile(() => seconds !== 0)
+    .subscribe((x) => {
+      seconds -= 1
+      if (seconds === 0) {
+        this.timerDone();
+      }
+      this.time = this.secondsToTime(seconds)
     })
   }
 
   private time: object;
-  private seconds: number;
+  private inputSeconds: number;
   private timer: Observable<number>;
 
   private secondsToTime(secs: number): object{

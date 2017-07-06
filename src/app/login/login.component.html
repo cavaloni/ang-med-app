@@ -1,0 +1,7 @@
+<base href="/">
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <input name="username" ngModel required #username="ngModel">
+  <input name="password" ngModel required #password="ngModel">
+  <button>Sign In</button>
+</form>
+{{message}}
