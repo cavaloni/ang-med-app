@@ -25,7 +25,7 @@ export class TimerComponent implements OnInit {
   }
 
   private startTimer(): void {
-    let seconds = this.inputSeconds
+    let seconds: number = this.inputSeconds
     this.message = '';
     this.time = this.secondsToTime(seconds);
     this.timer = Observable.interval(1000);

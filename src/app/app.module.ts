@@ -3,10 +3,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/cor
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { TimerComponent } from './timer/timer.component';
 import { LoginComponent } from './login/login.component';
+import { ChartComponent } from './chart/chart.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -18,7 +20,8 @@ const appRoutes: Routes = [
     LoginComponent,
     AppComponent,
     TimerComponent,
-    LoginComponent
+    LoginComponent,
+    ChartComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
   imports: [
@@ -28,7 +31,8 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
